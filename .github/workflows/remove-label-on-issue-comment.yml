@@ -29,7 +29,7 @@ jobs:
               return
             }
             
-            // Check if REMOVED_LABEL is present
+            // Check if REMOVE_LABEL is present
             let filteredData = data.filter(label => label.name == REMOVE_LABEL)
             
             // Return early if filtering didn't identify the label as present
