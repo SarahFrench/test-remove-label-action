@@ -4,11 +4,14 @@ on:
     types: [created]
 
 jobs:
-  remove-foobar:
-    uses: ./.github/workflows/reusable.yml
-    with:
-      label-name: "waiting-response"
-  remove-stale:
-    uses: ./.github/workflows/reusable.yml
-    with:
-      label-name: "stale"
+  issue_comment_triage:
+    runs-on: ubuntu-latest
+    steps:
+      - id: remove-stale
+        uses: ./.github/workflows/reusable.yml
+        with:
+          label-name: "stale"
+      - id: remove-waiting-response
+        uses: ./.github/workflows/reusable.yml
+        with:
+          label-name: "waiting-response"
