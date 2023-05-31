@@ -2,6 +2,8 @@ name: Remove label from issues
 on:
   issue_comment:
     types: [created]
+    inputs:
+      label: "enhancement"
 
 jobs:
   remove-label:
@@ -12,7 +14,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const REMOVE_LABEL = "enhancement"
+            const REMOVE_LABEL = ${{ inputs.label }}
             console.log(`Attempting to remove label "${REMOVE_LABEL}"`)
             
             const { data } = await github.rest.issues.listLabelsOnIssue({
