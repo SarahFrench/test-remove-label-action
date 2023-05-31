@@ -1,15 +1,15 @@
-name: Issue Comment Created Triage
+# name: Issue Comment Created Triage
 
-on:
-  issue_comment:
-    types: [created]
+# on:
+#   issue_comment:
+#     types: [created]
 
-jobs:
-  remove_waiting_response:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
-      - uses: SarahFrench/action-remove-labels@a3db3593612711177ece459096c40a27a793173f #v2.0.0
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          labels: waiting-response
+# jobs:
+#   remove_waiting_response:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
+#       - uses: SarahFrench/action-remove-labels@a3db3593612711177ece459096c40a27a793173f #v2.0.0
+#         with:
+#           github_token: "${{ secrets.GITHUB_TOKEN }}"
+#           labels: waiting-response
