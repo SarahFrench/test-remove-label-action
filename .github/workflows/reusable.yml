@@ -1,4 +1,4 @@
-name: Remove "waiting-response" label on issue comment
+name: Remove specified label from issue
 on:
   workflow_call:
       inputs:
