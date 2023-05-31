@@ -32,12 +32,12 @@ jobs:
             }
             
             // Check if REMOVED_LABEL is present
-            let filteredData = resp.data.filter(label => label.name == REMOVED_LABEL)
+            let filteredData = data.filter(label => label.name == REMOVED_LABEL)
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "comment from the GHA you're making - hi!"
+              body: `comment from the GHA you're making - hi! Here's the filtered data: ${filteredData}`
             })
             
