@@ -13,8 +13,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("This does log")
-            const REMOVED_LABEL = "enhancement"
+            const REMOVE_LABEL = "enhancement"
+            console.log("Attempting to remove label ${REMOVE_LABEL}")
             
             const { data } = await github.rest.issues.listLabelsOnIssue({
               issue_number: context.issue.number,
@@ -27,17 +27,21 @@ jobs:
             
             // Return early if there are no labels
             if (data.length == 0){
-              console.log("Returning early due to lack of labels on the issue")
+              console.log(`Issue has no labels; not attempting to remove label ${REMOVE_LABEL}`)
               return
             }
             
             // Check if REMOVED_LABEL is present
-            let filteredData = data.filter(label => label.name == REMOVED_LABEL)
+            // Interpret a non-empty filtered array as proof that the label is present
+            let filteredData = data.filter(label => label.name == REMOVE_LABEL)
+            const labelPresent = filteredData.length > 0
+            
+            console.log("Label ${REMOVE_LABEL} found! Now deleting it from the issue...")
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `comment from the GHA you're making - hi! Here's the filtered data: ${filteredData}`
+              body: `Instead of commenting I should be removing ${REMOVE_LABEL}`
             })
             
