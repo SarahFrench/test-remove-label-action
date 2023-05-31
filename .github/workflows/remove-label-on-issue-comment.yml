@@ -6,8 +6,6 @@ on:
 jobs:
   remove-label:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
       - uses: actions/github-script@v6
         env:
