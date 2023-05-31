@@ -22,7 +22,7 @@ jobs:
               repo: context.repo.repo,
             })
             console.log("First response")
-            console.log("resp")
+            console.log(resp)
 
             
             // Return early if there are no labels
