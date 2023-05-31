@@ -32,10 +32,14 @@ jobs:
             }
             
             // Check if REMOVED_LABEL is present
-            // Interpret a non-empty filtered array as proof that the label is present
             let filteredData = data.filter(label => label.name == REMOVE_LABEL)
-            const labelPresent = filteredData.length > 0
             
+            // Return early if filtering didn't identify the label as present
+            if (filteredData.length == 0){
+              console.log(`Issue has no labels; not attempting to remove label ${REMOVE_LABEL}`)
+              return
+            }
+
             console.log("Label ${REMOVE_LABEL} found! Now deleting it from the issue...")
 
             await github.rest.issues.removeLabel({
