@@ -13,7 +13,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("Does this log")
+            console.log("This does log")
             const REMOVED_LABEL = "enhancement"
             
             const resp = await github.rest.issues.listLabelsOnIssue({
@@ -21,9 +21,13 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
             })
+            console.log("First response")
+            console.log("resp")
+
             
             // Return early if there are no labels
             if (resp.data.length > 0){
+              console.log("Returning early due to lack of labels on the issue")
               return
             }
             
