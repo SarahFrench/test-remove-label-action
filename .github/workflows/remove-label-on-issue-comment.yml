@@ -7,7 +7,7 @@ jobs:
   remove-foobar:
     uses: ./.github/workflows/reusable.yml
     with:
-      label-name: "foobar"
+      label-name: "waiting-response"
   remove-stale:
     uses: ./.github/workflows/reusable.yml
     with:
