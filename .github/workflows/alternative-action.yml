@@ -14,7 +14,7 @@ jobs:
         with:
           script: |
             const REMOVE_LABEL = "enhancement"
-            console.log("Attempting to remove label ${REMOVE_LABEL}")
+            console.log(`Attempting to remove label ${REMOVE_LABEL}`)
             
             const { data } = await github.rest.issues.listLabelsOnIssue({
               issue_number: context.issue.number,
@@ -37,7 +37,7 @@ jobs:
               return
             }
 
-            console.log("Label ${REMOVE_LABEL} found! Now deleting it from the issue...")
+            console.log(`Label ${REMOVE_LABEL} found! Now deleting it from the issue...`)
 
             await github.rest.issues.removeLabel({
               issue_number: context.issue.number,
