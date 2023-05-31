@@ -16,17 +16,17 @@ jobs:
             console.log("This does log")
             const REMOVED_LABEL = "enhancement"
             
-            const resp = await github.rest.issues.listLabelsOnIssue({
+            const { data } = await github.rest.issues.listLabelsOnIssue({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
             })
-            console.log("First response")
-            console.log(resp)
+            console.log("First response's data:")
+            console.log(data)
 
             
             // Return early if there are no labels
-            if (resp.data.length > 0){
+            if (data.length == 0){
               console.log("Returning early due to lack of labels on the issue")
               return
             }
