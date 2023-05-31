@@ -1,10 +1,14 @@
-name: Remove "waiting-response" label on issue comment
+name: Remove labels on issue comment
 on:
   issue_comment:
     types: [created]
 
 jobs:
-  remove-label:
+  remove-foobar:
     uses: ./.github/workflows/reusable.yml
     with:
       label-name: "foobar"
+  remove-stale:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      label-name: "stale"
