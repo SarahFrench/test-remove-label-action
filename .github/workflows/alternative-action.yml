@@ -38,10 +38,10 @@ jobs:
             
             console.log("Label ${REMOVE_LABEL} found! Now deleting it from the issue...")
 
-            await github.rest.issues.createComment({
+            await github.rest.issues.removeLabel({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Instead of commenting I should be removing ${REMOVE_LABEL}`
+              name: REMOVE_LABEL
             })
             
