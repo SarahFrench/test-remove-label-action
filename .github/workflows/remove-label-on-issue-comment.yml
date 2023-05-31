@@ -1,4 +1,4 @@
-name: Remove label from issues
+name: Remove "waiting-response" label on issue comment
 on:
   issue_comment:
     types: [created]
